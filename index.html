@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>relay</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/icons/1467922072423628904/2144e6051f63a5f1cb23e0065304682b.webp?size=80&quality=lossless">
+<style>* { cursor: none !important; }</style>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0d0d0d;
+    color: #e8e8e8;
+    line-height: 1.6;
+}
+
+.special-price {
+  color: #bd0293;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* NAV */
+nav {
+    padding: 28px 0;
+    border-bottom: 1px solid #1a1a1a;
+
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(40px);
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.brand .img {
+    height: 48px;
+    width: 48px;
+
+    display: block;
+
+    position: relative;
+    top: 24px;
+    left: 24px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-text small {
+    font-size: 14px;
+    font-weight: 400;
+    color: #aaa;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #aaa;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* HERO */
+.hero {
+    padding: 120px 0 90px;
+}
+
+.hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    color: #aaa;
+    max-width: 680px;
+    margin-bottom: 32px;
+}
+
+.slogans div {
+    color: #ccc;
+    margin-bottom: 6px;
+}
+
+span.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: fit-content;
+}
+
+span.text svg {
+    height: 16px;
+    color: white;
+}
+
+.cls-1 {
+    color: white;
+}
+
+/* SECTIONS */
+section {
+    padding: 90px 0;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #9741fc,
+    #ff5fd2,
+    #9741fc,
+    transparent
+  );
+  box-shadow:
+    0 0 10px rgba(151, 65, 252, 0.6),
+    0 0 20px rgba(255, 95, 210, 0.4);
+}
+
+
+h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.section-sub {
+    color: #999;
+    max-width: 680px;
+    margin-bottom: 50px;
+}
+
+/* CARDS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.card {
+    background: #141414;
+    border: 1px solid #222;
+    border-radius: 14px;
+    padding: 28px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+.price {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    color: #d147ff;
+    margin: 14px 0 22px;
+}
+
+button {
+  align-items: center;
+  background-image: linear-gradient(144deg, #af40ff, #c142f3 50%, #e300eb);
+  border: 0;
+  border-radius: 8px;
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  line-height: 1em;
+  max-width: 100%;
+  min-width: 140px;
+  padding: 3px;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:active,
+button:hover {
+  outline: 0;
+}
+
+button span {
+  background-color: rgb(5, 6, 45);
+  padding: 16px 24px;
+  border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  transition: 300ms;
+}
+
+button:hover span {
+  background: none;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.card ul {
+    list-style: none;
+    margin-bottom: 26px;
+}
+
+.card li {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.card li::before {
+    content: "→ ";
+    color: #d40479;
+}
+
+/*.card button {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #fff;
+    color: #000;
+}*/
+
+/* HOSTING */
+.hosting-box {
+    background: linear-gradient(135deg, #141414, #0f0f0f);
+    border: 2px solid #bd0293;
+    border-radius: 18px;
+    padding: 48px;
+    max-width: 760px;
+}
+
+.hosting-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    color: #bd0293;
+    margin: 16px 0;
+}
+
+.hosting-tagline {
+    font-size: 18px;
+    color: #ddd;
+    margin-bottom: 28px;
+}
+
+.highlight {
+    color: #bd0293;
+    font-weight: 600;
+}
+
+/* TRUST */
+.trust-box {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 760px;
+}
+
+.trust-box p {
+    color: #bbb;
+    margin-bottom: 14px;
+}
+
+/* FOOTER */
+footer {
+    padding: 60px 0;
+    border-top: 1px solid #1a1a1a;
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+}
+
+.loading-box {
+    height: 48px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.ring {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  --color: #fe53bb;
+  border-bottom: 2px solid var(--color);
+  animation: rotate1 1s ease-in-out infinite;
+  box-shadow: 0 0 2px #8e8e8e;
+}
+
+@keyframes rotate1 {
+  from {
+    transform: rotateX(50deg) rotateZ(110deg);
+  }
+  to {
+    transform: rotateX(50deg) rotateZ(470deg);
+  }
+}
+
+.ring:nth-child(2) {
+  --color: #8f51ea;
+  animation-name: rotate2;
+}
+
+@keyframes rotate2 {
+  from {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);
+  }
+  to {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);
+  }
+}
+
+.ring:nth-child(3) {
+  --color: #0044ff;
+  animation-name: rotate3;
+}
+
+@keyframes rotate3 {
+  from {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);
+  }
+  to {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);
+  }
+}
+
+.ring:nth-child(4) {
+  --color: #fe53bb;
+  animation-name: rotate4;
+  width: 38px;
+  height: 38px;
+  border: 2px solid transparent;
+  border-bottom: 4px solid var(--color);
+}
+
+@keyframes rotate4 {
+  from {
+    transform: rotateX(50deg) rotateZ(470deg);
+  }
+  to {
+    transform: rotateX(50deg) rotateZ(110deg);
+  }
+}
+
+.ring:nth-child(5) {
+  --color: #8f51ea;
+  animation-name: rotate5;
+  width: 38px;
+  height: 38px;
+  border: 2px solid transparent;
+  border-bottom: 4px solid var(--color);
+}
+
+@keyframes rotate5 {
+  from {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(380deg);
+  }
+  to {
+    transform: rotateX(20deg) rotateY(50deg) rotateZ(20deg);
+  }
+}
+
+.ring:nth-child(6) {
+  --color: #0044ff;
+  animation-name: rotate6;
+  width: 38px;
+  height: 38px;
+  border: 2px solid transparent;
+  border-bottom: 4px solid var(--color);
+}
+
+@keyframes rotate6 {
+  from {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(90deg);
+  }
+  to {
+    transform: rotateX(40deg) rotateY(130deg) rotateZ(450deg);
+  }
+}
+
+/* Pulsing animation for nucleus */
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow:
+      0 0 20px #fe53bb,
+      0 0 40px #8f51ea;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow:
+      0 0 30px #fe53bb,
+      0 0 60px #8f51ea;
+  }
+}
+
+.nucleus {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #fe53bb, #8f51ea);
+  border-radius: 50%;
+  box-shadow:
+    0px 0 10px #fe53bb,
+    0 0 20px #8f51ea;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <div class="brand">
+            <!--<img class='img' src="https://cdn.discordapp.com/icons/1467922072423628904/2144e6051f63a5f1cb23e0065304682b.webp?size=512&quality=lossless" />-->
+            <div class="img">
+                <div class="loader">
+                    <div class="nucleus"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                    <div class="ring"></div>
+                </div>
+            </div>
+
+            <div class="brand-text">
+                relay
+                <small>by Molecule Bus</small>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#web">Web</a>
+            <a href="#bots">Bots</a>
+            <a href="#apps">Apps</a>
+            <a href="#scripts">Scripts</a>
+            <a href="#hosting">Hosting</a>
+            <a href="#custom">Other</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+<div class="hero">
+    <h1>
+        Websites, bots, apps, scripts,<br>
+        and absurdly cheap hosting,<br>
+        without the agency tax.
+    </h1>
+
+    <p>
+        Custom websites, Discord bots, scripts, apps, internal tools, and more.
+        No packages full of nonsense. No inflated pricing.
+    </p>
+
+    <div class="slogans">
+        <div>Serious quality, honest pricing.</div>
+        <div>You describe the idea, we build the solution.</div>
+        <div>Cheap != low effort.</div>
+    </div>
+
+    <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Join our Discord
+    </span></button></a>
+</div>
+
+<hr/>
+
+<section id="web">
+    <h2>Websites</h2>
+    <p class="section-sub">Personal sites, portfolios, landing pages, business websites, and online stores / ecommerce.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>Personal / Portfolio / Landing Pages</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Custom design</li>
+                <li>No artificial limits</li>
+                <li>Responsive layouts</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Business Websites</h3>
+            <div class="price">Starting from just 100⌬</div>
+            <ul>
+                <li>Professional layout & branding</li>
+                <li>Multiple pages</li>
+                <li>Optimized for conversion</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Online Stores / Ecommerce</h3>
+            <div class="price">Starting from just 500⌬</div>
+            <ul>
+                <li>Products & payments setup</li>
+                <li>Custom ecommerce features</li>
+                <li>Scalable with your needs</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section id="bots">
+    <h2>Bots</h2>
+    <p class="section-sub">Discord bots (moderation, utilities, automation) and custom integrations / scripts for servers.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>Discord Bots</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Built for your server</li>
+                <li>Moderation & utility features</li>
+                <li>Expandable later</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Custom Integrations / Scripts</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Automation scripts</li>
+                <li>Custom server tools</li>
+                <li>Other requests welcome</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section id="apps">
+    <h2>Apps</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Android Apps</h3>
+            <div class="price">Starting from just 100⌬</div>
+            <ul>
+                <li>Custom Android development</li>
+                <li>UI/UX design included</li>
+                <li>Tested for multiple devices</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Desktop Apps</h3>
+            <div class="price">Starting from just 100⌬</div>
+            <ul>
+                <li>Windows, Mac, or Linux</li>
+                <li>Custom functionality</li>
+                <li>Includes scripts and integrations</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section id="scripts">
+    <h2>Scripts & Automation</h2>
+    <div class="grid">
+        <div class="card">
+            <h3>Server-side Scripts</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Node.js, Python, etc.</li>
+                <li>Custom backend scripts</li>
+                <li>API integrations</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Client-side Scripts</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>JavaScript or browser scripts</li>
+                <li>Automation and utilities</li>
+                <li>Custom requests welcome</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>Task Automation & Utilities</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Automate repetitive tasks</li>
+                <li>Custom utilities for workflow</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+        <div class="card">
+            <h3>API Integrations</h3>
+            <div class="price">Starting from just 50⌬</div>
+            <ul>
+                <li>Connect apps or services</li>
+                <li>Custom solutions for your project</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section id="hosting">
+    <h2>Hosting that feels illegal</h2>
+    <div class="hosting-box">
+        <div class="hosting-price">10⌬ / month</div>
+        <ul>
+            <li>One plan only, simple pricing</li>
+            <li>Supported runtimes: Node.js, Python, Java, C#, Rust, Lua</li>
+            <li>Supported databases: MongoDB, MariaDB, PostgreSQL, Redis</li>
+            <li>Automatic restarts & monitoring included</li>
+            <li class="special-price">Only 50⌬ <b>once</b> if your project was built by us</li>
+        </ul>
+    </div>
+</section>
+
+<hr/>
+
+<section id="custom">
+    <h2>Other / Custom</h2>
+    <p class="section-sub">Custom requests that don’t fit above. Experimental or unusual projects are welcome.</p>
+    <div class="grid">
+        <div class="card">
+            <h3>Other / Experimental</h3>
+            <div class="price">Contact us</div>
+            <ul>
+                <li>Anything custom or unusual</li>
+                <li>We will discuss feasibility</li>
+                <li>Flexible pricing</li>
+            </ul>
+            <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Order via Discord
+</span></button></a>
+        </div>
+    </div>
+</section>
+
+<hr/>
+
+<section id="contact">
+    <h2>Talk to us</h2>
+    <p class="section-sub">
+        No forms, no emails, no sales calls. Join the Discord and tell us what you want.
+    </p>
+
+    <a href="https://discord.gg/z94ykkB7"><button><span class="text">
+        <svg xmlns="http://www.w3.org/2000/svg" id="Discord-Logo" viewBox="0 0 126.644 96"><path id="Discord-Symbol-Blurple" fill="currentColor" d="M81.15,0c-1.2376,2.1973-2.3489,4.4704-3.3591,6.794-9.5975-1.4396-19.3718-1.4396-28.9945,0-.985-2.3236-2.1216-4.5967-3.3591-6.794-9.0166,1.5407-17.8059,4.2431-26.1405,8.0568C2.779,32.5304-1.6914,56.3725.5312,79.8863c9.6732,7.1476,20.5083,12.603,32.0505,16.0884,2.6014-3.4854,4.8998-7.1981,6.8698-11.0623-3.738-1.3891-7.3497-3.1318-10.8098-5.1523.9092-.6567,1.7932-1.3386,2.6519-1.9953,20.281,9.547,43.7696,9.547,64.0758,0,.8587.7072,1.7427,1.3891,2.6519,1.9953-3.4601,2.0457-7.0718,3.7632-10.835,5.1776,1.97,3.8642,4.2683,7.5769,6.8698,11.0623,11.5419-3.4854,22.3769-8.9156,32.0509-16.0631,2.626-27.2771-4.496-50.9172-18.817-71.8548C98.9811,4.2684,90.1918,1.5659,81.1752.0505l-.0252-.0505ZM42.2802,65.4144c-6.2383,0-11.4159-5.6575-11.4159-12.6535s4.9755-12.6788,11.3907-12.6788,11.5169,5.708,11.4159,12.6788c-.101,6.9708-5.026,12.6535-11.3907,12.6535ZM84.3576,65.4144c-6.2637,0-11.3907-5.6575-11.3907-12.6535s4.9755-12.6788,11.3907-12.6788,11.4917,5.708,11.3906,12.6788c-.101,6.9708-5.026,12.6535-11.3906,12.6535Z"/></svg>
+        Join our Discord
+    </span></button></a>
+</section>
+
+<footer>
+    <div>© relay</div>
+    <div style="display: flex; align-items: center; justify-content: center; width: fit-content; gap: .4rem;">
+        relay is owned and operated by
+        <img width="18px" src="https://cdn.discordapp.com/icons/1467922072423628904/2144e6051f63a5f1cb23e0065304682b.webp?size=512&quality=lossless" />
+        Molecule Bus.
+    </div>
+    
+</footer>
+
+</div>
+<script src="https://cdn.jsdelivr.net/gh/uukelele-scratch/Smooth-Cursor/dist/smooth-cursor.umd.js"></script>
+</body>
+</html>
